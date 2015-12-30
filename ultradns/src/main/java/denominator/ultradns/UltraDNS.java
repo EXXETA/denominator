@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 
+import denominator.ultradns.lagacy.WebForward;
 import feign.Body;
 import feign.Headers;
 import feign.Param;
@@ -203,4 +204,14 @@ interface UltraDNS {
 
     String type;
   }
+  
+  @RequestLine("POST")
+  @Body("<v01:queryWebForwards><zoneName>{zoneName}</zoneName></v01:queryWebForwards>")
+  List<WebForward> getWebForwardsOfZone(@Param("zoneName") String zoneName);
+
+  @RequestLine("POST")
+  @Body("<v01:addWebForward><transactionID/><requestTo>{requestTo}</requestTo><redirectTo>{redirectTo}</redirectTo><forwardType>Framed</forwardType><advanced>false</advanced><zoneName>{zoneName}</zoneName></v01:addWebForward>")
+  void addWebForward(@Param("zoneName") String zoneName, @Param("requestTo") String requestTo, @Param("redirectTo") String redirectTo);
+
+
 }

@@ -20,6 +20,7 @@ import denominator.ultradns.UltraDNS.DirectionalRecord;
 import denominator.ultradns.UltraDNS.NameAndType;
 import denominator.ultradns.UltraDNS.NetworkStatus;
 import denominator.ultradns.UltraDNS.Record;
+import denominator.ultradns.lagacy.WebForward;
 import feign.sax.SAXDecoder;
 import feign.sax.SAXDecoder.ContentHandlerWithResult;
 
@@ -346,4 +347,27 @@ class UltraDNSContentHandlers {
       }
     }
   }
+
+	static class WebForwardHandler extends DefaultHandler implements SAXDecoder.ContentHandlerWithResult<List<WebForward>> {
+
+		List<WebForward> webForwards = new ArrayList<WebForward>();
+
+		@Override
+		public List<WebForward> result() {
+			return webForwards;
+		}
+
+		 @Override
+		    public void startElement(String uri, String localName, String qName, Attributes attrs) {
+		      if (qName.endsWith("ns2:Web_Forward_Record")) {
+		    	  webForwards.add(WebForward.create(attrs.getValue("ZoneName"), attrs.getValue("RequestTo"), attrs.getValue("RedirectTo")));
+		      }
+		 }
+		
+
+		@Override
+		public void characters(char ch[], int start, int length) {
+			System.out.println("");
+		}
+	}
 }

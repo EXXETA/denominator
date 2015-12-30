@@ -14,6 +14,7 @@ import dagger.Provides;
 import denominator.BasicProvider;
 import denominator.CheckConnection;
 import denominator.DNSApiManager;
+import denominator.LagacyApi;
 import denominator.QualifiedResourceRecordSetApi;
 import denominator.ResourceRecordSetApi;
 import denominator.ZoneApi;
@@ -31,6 +32,7 @@ import denominator.ultradns.UltraDNSContentHandlers.NetworkStatusHandler;
 import denominator.ultradns.UltraDNSContentHandlers.RRPoolListHandler;
 import denominator.ultradns.UltraDNSContentHandlers.RecordListHandler;
 import denominator.ultradns.UltraDNSContentHandlers.RegionTableHandler;
+import denominator.ultradns.UltraDNSContentHandlers.WebForwardHandler;
 import denominator.ultradns.UltraDNSContentHandlers.ZoneNamesHandler;
 import denominator.ultradns.UltraDNSErrorDecoder.UltraDNSError;
 import feign.Feign;
@@ -139,6 +141,12 @@ public class UltraDNSProvider extends BasicProvider {
       return factory;
     }
 
+    @Provides
+    @Singleton
+    LagacyApi.Factory provideLagacyApiFactory(UltraDNSLagacyApi.Factory factory) {
+      return factory;
+    }
+
     @Provides(type = SET)
     QualifiedResourceRecordSetApi.Factory factoryToProfiles(GeoResourceRecordSetApi.Factory in) {
       return in;
@@ -199,6 +207,7 @@ public class UltraDNSProvider extends BasicProvider {
           .registerContentHandler(RegionTableHandler.class)
           .registerContentHandler(DirectionalGroupHandler.class)
           .registerContentHandler(UltraDNSError.class)
+          .registerContentHandler(WebForwardHandler.class)
           .build();
     }
   }

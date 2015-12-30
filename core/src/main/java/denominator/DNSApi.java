@@ -18,17 +18,20 @@ public class DNSApi {
   private final AllProfileResourceRecordSetApi.Factory allRRSetApiFactory;
   private final GeoResourceRecordSetApi.Factory geoApiFactory;
   private final WeightedResourceRecordSetApi.Factory weightedApiFactory;
+  private final LagacyApi.Factory lagacyApiFactory;
 
   @Inject
   DNSApi(ZoneApi zones, ResourceRecordSetApi.Factory rrsetApiFactory,
          AllProfileResourceRecordSetApi.Factory allRRSetApiFactory,
          GeoResourceRecordSetApi.Factory geoApiFactory,
-         WeightedResourceRecordSetApi.Factory weightedApiFactory) {
+         WeightedResourceRecordSetApi.Factory weightedApiFactory,
+         LagacyApi.Factory lagacyApiFactory) {
     this.zones = zones;
     this.rrsetApiFactory = rrsetApiFactory;
     this.allRRSetApiFactory = allRRSetApiFactory;
     this.geoApiFactory = geoApiFactory;
     this.weightedApiFactory = weightedApiFactory;
+    this.lagacyApiFactory = lagacyApiFactory;
   }
 
   /**
@@ -38,6 +41,9 @@ public class DNSApi {
     return zones;
   }
 
+  public LagacyApi lagacy(String id) {
+	    return lagacyApiFactory.create(id);
+	  }
   /**
    * Controls basic DNS records as a set. Operates against the zone with id {@code zoneId}. This api
    * will not affect or return advanced records such as {@link Geo}, and it is expected that no
