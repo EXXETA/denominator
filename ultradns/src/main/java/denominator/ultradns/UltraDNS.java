@@ -207,11 +207,19 @@ interface UltraDNS {
   
   @RequestLine("POST")
   @Body("<v01:queryWebForwards><zoneName>{zoneName}</zoneName></v01:queryWebForwards>")
-  List<WebForward> getWebForwardsOfZone(@Param("zoneName") String zoneName);
+  List<WebForward> queryWebForwards(@Param("zoneName") String zoneName);
 
   @RequestLine("POST")
-  @Body("<v01:addWebForward><transactionID/><requestTo>{requestTo}</requestTo><redirectTo>{redirectTo}</redirectTo><forwardType>Framed</forwardType><advanced>false</advanced><zoneName>{zoneName}</zoneName></v01:addWebForward>")
-  void addWebForward(@Param("zoneName") String zoneName, @Param("requestTo") String requestTo, @Param("redirectTo") String redirectTo);
+  @Body("<v01:addWebForward><transactionID/><requestTo>{requestTo}</requestTo><redirectTo>{redirectTo}</redirectTo><forwardType>{forwardType}</forwardType><advanced>false</advanced><zoneName>{zoneName}</zoneName></v01:addWebForward>")
+  void addWebForward(@Param("zoneName") String zoneName, @Param("requestTo") String requestTo, @Param("redirectTo") String redirectTo, @Param("forwardType") String forwardType);
+
+  @RequestLine("POST")
+  @Body("<v01:deleteWebForward><transactionID/><guid>{guid}</guid></v01:deleteWebForward>")
+  void deleteWebForward(@Param("guid") String guid);
+
+  @RequestLine("POST")
+  @Body("<v01:updateWebForward><transactionID/><guid>{guid}</guid><requestTo>{requestTo}</requestTo><redirectTo>{redirectTo}</redirectTo><forwardType>{forwardType}</forwardType></v01:updateWebForward>")
+  void updateWebForward(@Param("guid") String guid, @Param("requestTo") String requestTo, @Param("redirectTo") String redirectTo, @Param("forwardType") String forwardType);
 
 
 }

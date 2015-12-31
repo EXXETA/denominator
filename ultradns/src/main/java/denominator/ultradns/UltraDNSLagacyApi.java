@@ -1,6 +1,7 @@
 package denominator.ultradns;
 
 import java.util.Iterator;
+import java.util.List;
 
 import javax.inject.Inject;
 
@@ -18,17 +19,34 @@ public final class UltraDNSLagacyApi implements LagacyApi {
 		this.zoneName = zoneName;
 	}
 
-	public void addWebForward(String requestTo, String redirectTo) {
-		api.addWebForward(zoneName, requestTo, redirectTo);
+	public void putWebForward(WebForward webForward) {
+		api.addWebForward(zoneName, webForward.requestTo(), webForward.redirectTo(), webForward.forwardType());
 	}
 
-	public Iterator<WebForward> getAllWebForwardsOfZone() {
-		// this will list all basic or RR pool records.
-		Iterator<WebForward> forwards = api.getWebForwardsOfZone(zoneName).iterator();
+	public Iterator<WebForward> getWebForwards() {
+		Iterator<WebForward> forwards = webForwards().iterator();
 		return forwards;
+	}
+	
+	private List<WebForward> webForwards(){
+		return api.queryWebForwards(zoneName);
+	}
+	
+	public void deleteWebForwardByRequestTo(String requestTo){
+		for (WebForward wf : webForwards()){
+			if (wf.requestTo().equals(requestTo)){
+				removeWebForward(wf.guid());
+			}
+		}
 	}
 
 	
+	private void removeWebForward(String guid) {
+		api.deleteWebForward(guid);
+		
+	}
+
+
 	static final class Factory implements denominator.LagacyApi.Factory {
 
 		private final UltraDNS api;
