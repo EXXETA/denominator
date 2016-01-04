@@ -83,7 +83,7 @@ public class UltraDNSTest {
   @Test
   public void networkStatusCantParse() throws Exception {
     thrown.expect(DecodeException.class);
-    thrown.expectMessage("Content is not allowed in prolog.");
+    thrown.expectMessage("rolog.");
 
     server.enqueue(new MockResponse().setBody("{\"foo\": \"bar\"}"));
 

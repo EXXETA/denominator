@@ -209,6 +209,22 @@ public class DynamicCredentialsProviderExampleTest {
           }
         };
       }
+        
+
+        /**
+         * using mock as example case is made already with the zone api
+         */
+        @Provides
+        LagacyApi.Factory provideLagacyApiFactory() {
+          return new LagacyApi.Factory() {
+            final DNSApi mock = Denominator.create("mock").api();
+
+            @Override
+            public LagacyApi create(String id) {
+              return mock.lagacy(id);
+            }
+          };
+      }
 
       /**
        * @param credsProvider expected to return customer, username, and password in correct order

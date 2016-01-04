@@ -10,6 +10,7 @@ import java.util.Collections;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
+import denominator.assertj.ModelAssertions;
 import denominator.model.ResourceRecordSet;
 import denominator.model.rdata.AData;
 
@@ -47,7 +48,7 @@ public class GeosTest {
 
   @Test
   public void withAdditionalRegionsIdentityWhenAlreadyHaveRegions() {
-    assertThat(Geos.withAdditionalRegions(geoRRS, geo.regions())).isEqualTo(geoRRS);
+	  ModelAssertions.assertThat(Geos.withAdditionalRegions(geoRRS, geo.regions())).isEqualTo(geoRRS);
   }
 
   @Test

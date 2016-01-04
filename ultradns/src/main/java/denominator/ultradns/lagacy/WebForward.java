@@ -15,7 +15,7 @@ public class WebForward {
 		    this.redirectTo = checkNotNull(redirectTo, "redirectTo");
 		    this.zoneName = checkNotNull(zoneName, "zoneName");
 		    this.forwardType = checkNotNull(forwardType, "forwardType");
-		    this.guid = checkNotNull(forwardType, "guid");
+		    this.guid = guid;
 	  }
 
 	  /**

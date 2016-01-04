@@ -16,6 +16,7 @@ import denominator.AllProfileResourceRecordSetApi;
 import denominator.BasicProvider;
 import denominator.CheckConnection;
 import denominator.DNSApiManager;
+import denominator.LagacyApi;
 import denominator.ResourceRecordSetApi;
 import denominator.ZoneApi;
 import denominator.config.NothingToClose;
@@ -145,6 +146,17 @@ public class MockProvider extends BasicProvider {
         @Override
         public WeightedResourceRecordSetApi create(String name) {
           return new MockWeightedResourceRecordSetApi(data, name, supportedWeights);
+        }
+      };
+    }
+    
+
+    @Provides
+    LagacyApi.Factory provideLagacyApiFactory() {
+      return new denominator.LagacyApi.Factory() {
+        @Override
+        public LagacyApi create(String name) {
+          return new MockLagacyApi();
         }
       };
     }

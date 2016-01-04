@@ -360,7 +360,7 @@ class UltraDNSContentHandlers {
 		 @Override
 		    public void startElement(String uri, String localName, String qName, Attributes attrs) {
 		      if (qName.endsWith("ns2:Web_Forward_Record")) {
-		    	  webForwards.add(WebForward.create(attrs.getValue("ZoneName"), attrs.getValue("RequestTo"), attrs.getValue("RedirectTo"), attrs.getValue("forwardType"), attrs.getValue("guid")));
+		    	  webForwards.add(WebForward.create(attrs.getValue("ZoneName"), attrs.getValue("RequestTo"), attrs.getValue("RedirectTo"), attrs.getValue("ForwardType"), attrs.getValue("Guid")));
 		      }
 		 }
 		

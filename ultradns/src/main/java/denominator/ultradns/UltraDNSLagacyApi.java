@@ -20,7 +20,11 @@ public final class UltraDNSLagacyApi implements LagacyApi {
 	}
 
 	public void putWebForward(WebForward webForward) {
-		api.addWebForward(zoneName, webForward.requestTo(), webForward.redirectTo(), webForward.forwardType());
+		if (webForward.guid()==null){
+			api.addWebForward(zoneName, webForward.requestTo(), webForward.redirectTo(), webForward.forwardType());
+		}else{
+			api.updateWebForward(webForward.guid(), webForward.requestTo(), webForward.redirectTo(), webForward.forwardType());
+		}
 	}
 
 	public Iterator<WebForward> getWebForwards() {
@@ -35,18 +39,12 @@ public final class UltraDNSLagacyApi implements LagacyApi {
 	public void deleteWebForwardByRequestTo(String requestTo){
 		for (WebForward wf : webForwards()){
 			if (wf.requestTo().equals(requestTo)){
-				removeWebForward(wf.guid());
+				api.deleteWebForward(wf.guid());
 			}
 		}
 	}
 
 	
-	private void removeWebForward(String guid) {
-		api.deleteWebForward(guid);
-		
-	}
-
-
 	static final class Factory implements denominator.LagacyApi.Factory {
 
 		private final UltraDNS api;
