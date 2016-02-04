@@ -3,7 +3,7 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.netflix.denominator</groupId>
-	<artifactId>denominator-ultradns</artifactId>
+	<artifactId>denominator-msdns</artifactId>
 	<version>4.7.2-redbull-SNAPSHOT</version>
 	<dependencies>
 		<dependency>
@@ -17,22 +17,6 @@
 			<artifactId>assertj-core</artifactId>
 			<version>1.7.1</version>
 			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>com.squareup.okhttp</groupId>
-			<artifactId>mockwebserver</artifactId>
-			<version>2.5.0</version>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>com.netflix.feign</groupId>
-			<artifactId>feign-core</artifactId>
-			<version>8.10.0</version>
-		</dependency>
-		<dependency>
-			<groupId>com.netflix.feign</groupId>
-			<artifactId>feign-sax</artifactId>
-			<version>8.10.0</version>
 		</dependency>
 		<dependency>
 			<groupId>com.netflix.denominator</groupId>
@@ -53,6 +37,18 @@
 			<type>test-jar</type>
 			<scope>test</scope>
 		</dependency>
+		<dependency>
+			<groupId>com.xebialabs.overthere</groupId>
+			<artifactId>overthere</artifactId>
+			<version>4.2.1</version>
+		</dependency>
+		<dependency>
+			<groupId>com.netflix.feign</groupId>
+			<artifactId>feign-core</artifactId>
+			<version>8.10.0</version>
+			<scope>test</scope>
+		</dependency>
+
 	</dependencies>
 	<distributionManagement>
 		<snapshotRepository>

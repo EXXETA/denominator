@@ -5,7 +5,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.netflix.denominator</groupId>
 	<artifactId>denominator-core</artifactId>
-	<version>4.7.1-redbull</version>
+	<version>4.7.2-redbull-SNAPSHOT</version>
  <dependencies>
     <dependency>
       <groupId>com.squareup.dagger</groupId>
@@ -16,7 +16,7 @@
     <dependency>
       <groupId>com.netflix.denominator</groupId>
       <artifactId>denominator-model</artifactId>
-      <version>4.7.1-redbull</version>
+      <version>4.7.2-redbull-SNAPSHOT</version>
       <scope>runtime</scope>
     </dependency>
     <dependency>
@@ -46,7 +46,7 @@
        <dependency>
       <groupId>com.netflix.denominator</groupId>
       <artifactId>denominator-model</artifactId>
-      <version>4.7.1-redbull</version>
+      <version>4.7.2-redbull-SNAPSHOT</version>
       <type>test-jar</type>
       <scope>test</scope>
     </dependency>
@@ -67,4 +67,15 @@
      </plugin>
     </plugins>
   </build>
-</project>
+	<distributionManagement>
+		<snapshotRepository>
+			<id>Red Bull Artifactory</id>
+			<name>Red Bull Artifactory-snapshots</name>
+			<url>https://artifacts-headless.app.redbull.com/redbull-snapshots</url>
+		</snapshotRepository>
+		<repository>
+			<id>Red Bull Artifactory</id>
+			<name>Red Bull Artifactory-releases</name>
+			<url>https://artifacts-headless.app.redbull.com/redbull-releases</url>
+		</repository>
+	</distributionManagement></project>

@@ -3,7 +3,7 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.netflix.denominator</groupId>
-	<artifactId>denominator-ultradns</artifactId>
+	<artifactId>denominator-route53</artifactId>
 	<version>4.7.2-redbull-SNAPSHOT</version>
 	<dependencies>
 		<dependency>
@@ -37,19 +37,19 @@
 		<dependency>
 			<groupId>com.netflix.denominator</groupId>
 			<artifactId>denominator-core</artifactId>
-			<version>4.7.2-redbull-SNAPSHOT</version>
+			<version>4.7.1-redbull</version>
 		</dependency>
 		<dependency>
 			<groupId>com.netflix.denominator</groupId>
 			<artifactId>denominator-core</artifactId>
-			<version>4.7.2-redbull-SNAPSHOT</version>
+			<version>4.7.1-redbull</version>
 			<type>test-jar</type>
 			<scope>test</scope>
 		</dependency>
 		<dependency>
 			<groupId>com.netflix.denominator</groupId>
 			<artifactId>denominator-model</artifactId>
-			<version>4.7.2-redbull-SNAPSHOT</version>
+			<version>4.7.1-redbull</version>
 			<type>test-jar</type>
 			<scope>test</scope>
 		</dependency>

@@ -10,7 +10,7 @@ public class WebForward {
 	  private final String forwardType;
 	  private final String guid;
 
-	  WebForward(String requestTo, String redirectTo, String zoneName, String forwardType, String guid) {
+	  WebForward(String zoneName, String requestTo, String redirectTo, String forwardType, String guid) {
 		    this.requestTo = checkNotNull(requestTo, "requestTo");
 		    this.redirectTo = checkNotNull(redirectTo, "redirectTo");
 		    this.zoneName = checkNotNull(zoneName, "zoneName");
