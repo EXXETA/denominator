@@ -18,6 +18,7 @@ import denominator.AllProfileResourceRecordSetApi;
 import denominator.BasicProvider;
 import denominator.CheckConnection;
 import denominator.DNSApiManager;
+import denominator.LagacyApi;
 import denominator.ResourceRecordSetApi;
 import denominator.ZoneApi;
 import denominator.config.GeoUnsupported;
@@ -121,6 +122,17 @@ public class Route53Provider extends BasicProvider {
         Route53WeightedResourceRecordSetApi.Factory in) {
       return in;
     }
+
+    @Provides
+    LagacyApi.Factory provideLagacyApiFactory() {
+      return new denominator.LagacyApi.Factory() {
+        @Override
+        public LagacyApi create(String name) {
+          return new Route53LagacyApi();
+        }
+      };
+    }
+
 
     /**
      * See <a href= "http://docs.aws.amazon.com/Route53/latest/APIReference/API_ChangeResourceRecordSets.html"

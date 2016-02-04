@@ -54,12 +54,12 @@
 		<snapshotRepository>
 			<id>Red Bull Artifactory</id>
 			<name>Red Bull Artifactory-snapshots</name>
-			<url>https://artifacts-headless.app.redbull.com/redbull-snapshots</url>
+			<url>https://artifacts-headless.app.redbull.com/redbull-forks</url>
 		</snapshotRepository>
 		<repository>
 			<id>Red Bull Artifactory</id>
 			<name>Red Bull Artifactory-releases</name>
-			<url>https://artifacts-headless.app.redbull.com/redbull-releases</url>
+			<url>https://artifacts-headless.app.redbull.com/redbull-forks</url>
 		</repository>
 	</distributionManagement>
 </project>
